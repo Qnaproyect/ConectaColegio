@@ -14,12 +14,18 @@ import {
   Building2,
   LogOut,
   User as UserIcon,
+  Users,
+  BookOpen,
+  UserCheck,
+  UserCog,
+  ChevronDown,
 } from 'lucide-react'
 import { APP_NAME, SCHOOL_NAME } from '../data/school'
 import { useApp } from '../context/AppContext'
 import { useAuth } from '../context/AuthContext'
 import type { Usuario } from '../context/AuthContext'
 import { Toasts } from './Toasts'
+import { useState } from 'react'
 
 interface NavItem {
   to: string
@@ -61,6 +67,12 @@ const PROFILE_ICON: Record<string, LucideIcon> = {
   representante: UserRound,
   docente: GraduationCap,
   direccion: Building2,
+}
+
+const USER_ROLE_LABEL: Record<Usuario['rol'], string> = {
+  representante: 'Representante',
+  docente: 'Docente',
+  direccion: 'Dirección',
 }
 
 export default function AppShell() {
@@ -111,6 +123,7 @@ export default function AppShell() {
           <nav className="nav-list" aria-label="Navegación principal">
             <div className="nav-label">{nav.label}</div>
             <SidebarItems items={nav.items} />
+            {profile === 'direccion' && <DireccionSubNav />}
             {usuario?.rol === 'representante' && (
               <>
                 <div className="nav-label">Cuenta</div>
@@ -148,15 +161,55 @@ export default function AppShell() {
             </NavLink>
           )
         })}
+        {profile === 'direccion' && (
+          <NavLink to="/direccion/estudiantes" className={({ isActive }) => `bn-item${isActive ? ' active' : ''}`}>
+            <span className="bn-iconwrap">
+              <Users size={22} />
+            </span>
+            Comunidad
+          </NavLink>
+        )}
       </nav>
     </div>
   )
 }
 
-const USER_ROLE_LABEL: Record<Usuario['rol'], string> = {
-  representante: 'Representante',
-  docente: 'Docente',
-  direccion: 'Dirección',
+function DireccionSubNav() {
+  const [open, setOpen] = useState(false)
+  const location = typeof window !== 'undefined' ? window.location.pathname : ''
+  const isCommunityActive = location.startsWith('/direccion/estudiantes') || location.startsWith('/direccion/representantes') || location.startsWith('/direccion/docentes') || location.startsWith('/direccion/expediente')
+
+  return (
+    <>
+      <div className="nav-label" style={{ marginTop: 8 }}>Gestión de comunidad</div>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className={`nav-item${isCommunityActive ? ' active' : ''}`}
+        style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 8, background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: '8px 12px', borderRadius: 8, fontSize: 14, color: isCommunityActive ? '#1b5fd9' : '#374151', fontWeight: isCommunityActive ? 600 : 400 }}
+      >
+        <Users size={18} />
+        Comunidad
+        <ChevronDown size={16} style={{ marginLeft: 'auto', transform: open ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }} />
+      </button>
+      {open && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, paddingLeft: 12 }}>
+          <NavLink to="/direccion/estudiantes" className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}>
+            <BookOpen size={16} />
+            Estudiantes
+          </NavLink>
+          <NavLink to="/direccion/representantes" className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}>
+            <UserCheck size={16} />
+            Representantes
+          </NavLink>
+          <NavLink to="/direccion/docentes" className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}>
+            <UserCog size={16} />
+            Docentes
+          </NavLink>
+        </div>
+      )}
+    </>
+  )
 }
 
 function AvatarMini({ rol }: { rol: Usuario['rol'] }) {

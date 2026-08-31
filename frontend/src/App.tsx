@@ -24,6 +24,10 @@ import DirInicio from './pages/direccion/Inicio'
 import DirComunicados from './pages/direccion/Comunicados'
 import DirNuevoComunicado from './pages/direccion/NuevoComunicado'
 import DirSolicitudes from './pages/direccion/Solicitudes'
+import DirEstudiantes from './pages/direccion/Estudiantes'
+import DirRepresentantes from './pages/direccion/Representantes'
+import DirDocentes from './pages/direccion/Docentes'
+import DirExpediente from './pages/direccion/ExpedienteEstudiante'
 
 export default function App() {
   return (
@@ -56,6 +60,10 @@ export default function App() {
         <Route path="/direccion/comunicados" element={<RequireRol rol="direccion"><DirComunicados /></RequireRol>} />
         <Route path="/direccion/comunicados/nuevo" element={<RequireRol rol="direccion"><DirNuevoComunicado /></RequireRol>} />
         <Route path="/direccion/solicitudes" element={<RequireRol rol="direccion"><DirSolicitudes /></RequireRol>} />
+        <Route path="/direccion/estudiantes" element={<RequireRol rol="direccion"><DirEstudiantes /></RequireRol>} />
+        <Route path="/direccion/representantes" element={<RequireRol rol="direccion"><DirRepresentantes /></RequireRol>} />
+        <Route path="/direccion/docentes" element={<RequireRol rol="direccion"><DirDocentes /></RequireRol>} />
+        <Route path="/direccion/expediente/:id" element={<RequireRol rol="direccion"><DirExpediente /></RequireRol>} />
 
         <Route path="/" element={<HomeRedirect />} />
       </Route>

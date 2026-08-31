@@ -13,11 +13,21 @@ export interface Student {
   average: number
   history: Period[]
   tasks: Task[]
+  age?: number
+  studentId?: string
+  level?: 'Inicial' | 'Primaria' | 'Secundaria'
+  status?: 'Activo' | 'Inactivo' | 'Graduado'
+  representativeIds?: string[]
+  attendance?: number
+  lastEvaluation?: string
+  observations?: Observation[]
+  courseShort?: string
 }
 
 export interface Grade {
   subject: string
   score: number
+  teacherId?: string
 }
 
 export interface Period {
@@ -106,4 +116,41 @@ export interface Teacher {
   subject: string
   courses: string[]
   studentsCount: number
+}
+
+export interface Representative {
+  id: string
+  name: string
+  email: string
+  phone: string
+  studentIds: string[]
+  status: 'Activo' | 'Inactivo'
+  lastAccess: string
+  address?: string
+}
+
+export interface Observation {
+  id: string
+  date: string
+  type: 'Académico' | 'Comportamiento' | 'Administrativo'
+  text: string
+  author: string
+}
+
+export interface AttendanceRecord {
+  studentId: string
+  present: number
+  absent: number
+  justified: number
+  total: number
+  percentage: number
+}
+
+export interface Course {
+  id: string
+  name: string
+  level: 'Inicial' | 'Primaria' | 'Secundaria'
+  section: string
+  teacherId: string
+  studentCount: number
 }

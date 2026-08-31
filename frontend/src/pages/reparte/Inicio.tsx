@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CalendarDays, CheckCircle2, Megaphone } from 'lucide-react'
-import { events, maria, students } from '../../data/school'
+import { events, maria } from '../../data/school'
+import { getStudentsByRepresentative, getPerformanceLabel, getPerformanceColor } from '../../data/community'
 import { useApp } from '../../context/AppContext'
 import { Avatar, Card, Chip, SectionTitle } from '../../components/ui'
 
 export default function Inicio() {
   const { selectedStudentId, setSelectedStudentId, comunicados: coms, notify } = useApp()
-  const student = students.find((s) => s.id === selectedStudentId) ?? students[0]
+
+  const repStudents = getStudentsByRepresentative('maria-rodriguez')
+  const student = repStudents.find((s) => s.id === selectedStudentId) ?? repStudents[0]
   const unread = coms.filter((c) => !c.read).length
-  const pendingTasks = student.tasks.filter((t) => t.status === 'Pendiente').length
+  const pendingTasks = student ? student.tasks.filter((t) => t.status === 'Pendiente').length : 0
   const featured = coms[0]
   const nextEvent = events[0]
 
@@ -23,7 +26,7 @@ export default function Inicio() {
         </div>
 
         <div className="grid grid-2">
-          {students.map((s) => (
+          {repStudents.map((s) => (
             <Card
               key={s.id}
               className={s.id === selectedStudentId ? 'sel-kid' : ''}
@@ -38,6 +41,11 @@ export default function Inicio() {
                   <div className="card-title">{s.shortName}</div>
                   <div className="card-sub">{s.course}</div>
                   <div className="card-sub">{s.teacher}</div>
+                  <div style={{ marginTop: 4 }}>
+                    <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: 10, fontSize: 11, fontWeight: 600, color: getPerformanceColor(s.average), background: getPerformanceColor(s.average) + '15' }}>
+                      {s.average} · {getPerformanceLabel(s.average)}
+                    </span>
+                  </div>
                 </div>
                 {s.id === selectedStudentId ? (
                   <Chip tone="blue">Seleccionado</Chip>
@@ -67,7 +75,7 @@ export default function Inicio() {
                 <CalendarDays size={22} />
               </div>
               <div className="li-main">
-                <div className="card-title">{student.shortName} tiene {pendingTasks} tareas pendientes</div>
+                <div className="card-title">{student?.shortName} tiene {pendingTasks} tareas pendientes</div>
                 <div className="card-sub">Revisa la agenda para más detalles</div>
               </div>
             </div>

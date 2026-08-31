@@ -9,6 +9,7 @@ import type {
   Task,
   Teacher,
 } from '../types'
+import { communityStudents } from './community'
 
 export const SCHOOL_NAME = 'Demo'
 
@@ -21,139 +22,12 @@ export const DIRECCION: Profile = 'direccion'
 
 export const maria: { name: string; role: string } = {
   name: 'María Rodríguez',
-  role: 'Representante de Daniel y Sofía',
+  role: 'Representante de Daniel, Sofía y Carlos',
 }
 
-export const students: Student[] = [
-  {
-    id: 'daniel',
-    name: 'Daniel Pérez Rodríguez',
-    shortName: 'Daniel',
-    course: '5.º de Primaria A',
-    section: 'Sección A',
-    teacher: 'Profa. Laura Martínez',
-    emoji: '👦',
-    color: '#1b5fd9',
-    grades: [
-      { subject: 'Matemáticas', score: 92 },
-      { subject: 'Lengua Española', score: 88 },
-      { subject: 'Ciencias Naturales', score: 95 },
-      { subject: 'Ciencias Sociales', score: 90 },
-      { subject: 'Inglés', score: 93 },
-    ],
-    average: 91.6,
-    history: [
-      {
-        id: '2025-26',
-        label: '2025–2026',
-        average: 89.4,
-        grades: [
-          { subject: 'Matemáticas', score: 88 },
-          { subject: 'Lengua Española', score: 90 },
-          { subject: 'Ciencias Naturales', score: 91 },
-          { subject: 'Ciencias Sociales', score: 87 },
-          { subject: 'Inglés', score: 91 },
-        ],
-      },
-      {
-        id: '2024-25',
-        label: '2024–2025',
-        average: 86.8,
-        grades: [
-          { subject: 'Matemáticas', score: 84 },
-          { subject: 'Lengua Española', score: 87 },
-          { subject: 'Ciencias Naturales', score: 90 },
-          { subject: 'Ciencias Sociales', score: 85 },
-          { subject: 'Inglés', score: 88 },
-        ],
-      },
-    ],
-    tasks: [
-      {
-        id: 'd-t1',
-        studentId: 'daniel',
-        subject: 'Matemáticas',
-        title: 'Resolver ejercicios 1–10 de la página 45.',
-        dueLabel: 'Entrega mañana',
-        status: 'Pendiente',
-      },
-      {
-        id: 'd-t2',
-        studentId: 'daniel',
-        subject: 'Ciencias Naturales',
-        title: 'Preparar exposición sobre el sistema solar.',
-        dueLabel: 'Viernes, 22 de agosto',
-        status: 'Pendiente',
-      },
-      {
-        id: 'd-t3',
-        studentId: 'daniel',
-        subject: 'Lengua Española',
-        title: 'Leer el capítulo 3 de «La isla del tesoro».',
-        dueLabel: 'Lunes, 25 de agosto',
-        status: 'Completada',
-      },
-    ],
-  },
-  {
-    id: 'sofia',
-    name: 'Sofía Pérez Rodríguez',
-    shortName: 'Sofía',
-    course: '2.º de Secundaria B',
-    section: 'Sección B',
-    teacher: 'Prof. Carlos Méndez',
-    emoji: '👧',
-    color: '#7c3aed',
-    grades: [
-      { subject: 'Matemáticas', score: 88 },
-      { subject: 'Lengua Española', score: 94 },
-      { subject: 'Ciencias Naturales', score: 90 },
-      { subject: 'Ciencias Sociales', score: 95 },
-      { subject: 'Inglés', score: 92 },
-    ],
-    average: 91.8,
-    history: [
-      {
-        id: '2025-26b',
-        label: '2025–2026',
-        average: 92.2,
-        grades: [
-          { subject: 'Matemáticas', score: 89 },
-          { subject: 'Lengua Española', score: 93 },
-          { subject: 'Ciencias Naturales', score: 91 },
-          { subject: 'Ciencias Sociales', score: 96 },
-          { subject: 'Inglés', score: 92 },
-        ],
-      },
-    ],
-    tasks: [
-      {
-        id: 's-t1',
-        studentId: 'sofia',
-        subject: 'Historia',
-        title: 'Investigar sobre la independencia nacional.',
-        dueLabel: 'Lunes, 25 de agosto',
-        status: 'Pendiente',
-      },
-      {
-        id: 's-t2',
-        studentId: 'sofia',
-        subject: 'Inglés',
-        title: 'Completar la práctica 5 del workbook.',
-        dueLabel: 'Mañana',
-        status: 'Pendiente',
-      },
-      {
-        id: 's-t3',
-        studentId: 'sofia',
-        subject: 'Ciencias Naturales',
-        title: 'Resumen del video sobre el ciclo del agua.',
-        dueLabel: 'Entregada',
-        status: 'Completada',
-      },
-    ],
-  },
-]
+export const students: Student[] = communityStudents.filter((s) =>
+  ['daniel', 'sofia'].includes(s.id)
+)
 
 export const teacherProfile: Teacher = {
   id: 'laura',
