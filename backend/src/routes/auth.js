@@ -6,7 +6,7 @@ const db = require('../config/database');
 const asyncHandler = require('../middleware/asyncHandler');
 const router = express.Router();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'conecta-colegio-secret-dev';
+const JWT_SECRET = process.env.JWT_SECRET || 'aulared-secret-dev';
 
 router.post('/login', asyncHandler(async (req, res) => {
   const { email, password } = req.body;

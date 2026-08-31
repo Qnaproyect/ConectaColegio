@@ -10,9 +10,9 @@ import type {
   Teacher,
 } from '../types'
 
-export const SCHOOL_NAME = 'Colegio Horizonte'
+export const SCHOOL_NAME = 'Demo'
 
-export const APP_NAME = 'Conecta Colegio'
+export const APP_NAME = 'AulaRed'
 export const APP_TAGLINE = 'La comunicación escolar, en un solo lugar.'
 
 export const REPRESENTANTE: Profile = 'representante'

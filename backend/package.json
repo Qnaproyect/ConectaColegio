@@ -1,7 +1,7 @@
 {
-  "name": "conecta-colegio-backend",
+  "name": "aulared-backend",
   "version": "1.0.0",
-  "description": "API de Conecta Colegio (demo institucional)",
+  "description": "API de AulaRed (demo institucional)",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",

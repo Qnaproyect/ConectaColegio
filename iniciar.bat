@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
 echo ================================================================
-echo   Conecta Colegio - Inicio
+echo   AulaRed - Inicio
 echo ================================================================
 echo.
 
@@ -57,15 +57,15 @@ rem  Arrancar servicios
 rem ---------------------------------------------------------------
 echo [API] Arrancando http://localhost:3001 ...
 cd /d "%~dp0backend"
-start "Conecta Colegio API" /B node src/index.js
+start "AulaRed API" /B node src/index.js
 
 echo [Frontend] Arrancando http://localhost:5173 ...
 cd /d "%~dp0frontend"
-start "Conecta Colegio Frontend" /B node node_modules\vite\bin\vite.js --host 0.0.0.0 --port 5173 --strictPort
+start "AulaRed Frontend" /B node node_modules\vite\bin\vite.js --host 0.0.0.0 --port 5173 --strictPort
 
 echo.
 echo ================================================================
-echo   Conecta Colegio iniciado:
+echo   AulaRed iniciado:
 echo.
 echo     Portal:   http://localhost:5173
 echo     API:      http://localhost:3001

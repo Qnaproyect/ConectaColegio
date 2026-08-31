@@ -23,7 +23,7 @@ const USUARIOS_DEMO = [
 ];
 
 async function runMigrations() {
-  console.log('Ejecutando migraciones de Conecta Colegio...');
+  console.log('Ejecutando migraciones de AulaRed...');
 
   await db.exec(`
     CREATE TABLE IF NOT EXISTS usuarios (

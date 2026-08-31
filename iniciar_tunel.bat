@@ -11,7 +11,7 @@ if not defined NODE_BIN (
 )
 if defined NODE_BIN set "PATH=%NODE_BIN%;%PATH%"
 
-echo [Conecta Colegio] Preparando tunel Cloudflare...
+echo [AulaRed] Preparando tunel Cloudflare...
 
 if not exist cloudflared.exe (
     echo [ERROR] cloudflared.exe no esta en la carpeta del proyecto.
@@ -33,7 +33,7 @@ rem Comprobar API activa
 netstat -ano | findstr ":3001" | findstr "LISTENING" >nul 2>&1
 if errorlevel 1 (
     echo [API] Arrancando backend en http://localhost:3001 ...
-    start "Conecta Colegio API" /B node backend\src\index.js
+    start "AulaRed API" /B node backend\src\index.js
 ) else (
     echo [API] Backend ya en ejecucion.
 )
@@ -42,7 +42,7 @@ rem Iniciar Vite solo si no esta corriendo
 netstat -ano | findstr ":5173" | findstr "LISTENING" >nul 2>&1
 if errorlevel 1 (
     echo [Vite] Arrancando servidor en http://localhost:5173 ...
-    start "Conecta Colegio Dev" /B node frontend\node_modules\vite\bin\vite.js --host 0.0.0.0 --port 5173 --strictPort --config frontend\vite.config.ts
+    start "AulaRed Dev" /B node frontend\node_modules\vite\bin\vite.js --host 0.0.0.0 --port 5173 --strictPort --config frontend\vite.config.ts
 ) else (
     echo [Vite] Servidor ya en ejecucion.
 )
@@ -50,7 +50,7 @@ if errorlevel 1 (
 rem Lanzar el tunel en segundo plano
 echo [Tunel] Conectando con Cloudflare...
 del /q "%TEMP%\cfd_tunel.log" >nul 2>&1
-start "Conecta Colegio Tunel" /B tunel_cloudflare.bat
+start "AulaRed Tunel" /B tunel_cloudflare.bat
 
 rem Esperar y capturar la URL publica
 echo [Tunel] Obteniendo URL publica...
@@ -72,7 +72,7 @@ if not defined PUBLIC (
 
 echo.
 echo ================================================================
-echo   Conecta Colegio disponible publicamente:
+echo   AulaRed disponible publicamente:
 echo.
 echo     %PUBLIC%
 echo.

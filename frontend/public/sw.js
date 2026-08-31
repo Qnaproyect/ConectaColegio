@@ -1,4 +1,4 @@
-const CACHE_NAME = 'conecta-colegio-v1';
+const CACHE_NAME = 'aulared-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

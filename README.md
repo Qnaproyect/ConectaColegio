@@ -1,4 +1,4 @@
-# Conecta Colegio
+# AulaRed
 
 Plataforma de demostración institucional de **comunicación escolar**. Centraliza la comunicación entre colegios, representantes, docentes y dirección, sustituyendo el desorden de los grupos de WhatsApp.
 
@@ -51,6 +51,14 @@ iniciar_tunel.bat
 
 Genera una URL pública tipo `https://xxx.trycloudflare.com`. **Nota:** la URL cambia cada vez que se ejecuta. El túnel requiere que `iniciar.bat` esté corriendo (Vite y API activos).
 
+## PWA instalable
+
+La app se puede instalar en celular o escritorio como una PWA (Progressive Web App):
+
+1. Abre la URL del túnel en el navegador del celular.
+2. Toca "Añadir a pantalla de inicio" o "Instalar app".
+3. La app se abrirá sin barra de navegador, como una app nativa.
+
 ## Experiencias
 
 - **Representante**: dashboard, comunicados con confirmación de lectura, mensajes con horario de atención de docentes, agenda y tareas por hijo, perfil académico con historial, eventos con autorización digital y servicios.
@@ -60,14 +68,14 @@ Genera una URL pública tipo `https://xxx.trycloudflare.com`. **Nota:** la URL c
 ## Estructura
 
 ```
-conecta-colegio/
+AulaRed/
 ├── backend/           # API Node.js + SQLite (node:sqlite) + JWT
 │   └── src/
 │       ├── config/    # Conexión a la BD
 │       ├── middleware/# Auth y roles
 │       ├── migrations/# Esquema y usuarios demo
 │       └── routes/    # Endpoints (auth)
-├── frontend/          # React + TypeScript + Vite (SPA)
+├── frontend/          # React + TypeScript + Vite (SPA + PWA)
 │   └── src/
 │       ├── api/       # Cliente HTTP con token
 │       ├── components/# Shell, UI reutilizable, rutas protegidas

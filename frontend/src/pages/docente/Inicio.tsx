@@ -13,7 +13,7 @@ export default function Inicio() {
     <>
       <PageHeader
         title={`Hola, Prof. ${teacherProfile.name.split(' ')[1]} 👩‍🏫`}
-        subtitle={`${teacherProfile.subject} · Docente del Colegio Horizonte`}
+        subtitle={`${teacherProfile.subject} · Docente del Colegio Demo`}
       />
 
       <div className="kpi-grid">

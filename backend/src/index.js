@@ -25,7 +25,7 @@ async function start() {
     await db.init();
     await runMigrations();
     app.listen(PORT, () => {
-      console.log(`Conecta Colegio API corriendo en puerto ${PORT}`);
+      console.log(`AulaRed API corriendo en puerto ${PORT}`);
     });
   } catch (err) {
     console.error('Error al iniciar el servidor:', err);

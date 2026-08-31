@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 cd /d "%~dp0"
 
 echo ================================================================
-echo   Conecta Colegio - Instalador
+echo   AulaRed - Instalador
 echo ================================================================
 echo.
 

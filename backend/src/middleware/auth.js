@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: require('path').join(__dirname, '../../.env') });
 
-const JWT_SECRET = process.env.JWT_SECRET || 'conecta-colegio-secret-dev';
+const JWT_SECRET = process.env.JWT_SECRET || 'aulared-secret-dev';
 
 function authMiddleware(req, res, next) {
   const header = req.headers.authorization;

@@ -1,6 +1,6 @@
 {
-  "name": "Conecta Colegio",
-  "short_name": "Conecta",
+  "name": "AulaRed",
+  "short_name": "AulaRed",
   "description": "La comunicación escolar, en un solo lugar.",
   "start_url": "/",
   "scope": "/",

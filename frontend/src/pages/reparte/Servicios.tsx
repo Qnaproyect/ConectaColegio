@@ -53,7 +53,7 @@ export default function Servicios() {
         })}
       </div>
       <Card style={{ marginTop: 14 }}>
-        <div className="card-title" style={{ marginBottom: 4 }}>¿Qué hace diferente a Conecta Colegio?</div>
+        <div className="card-title" style={{ marginBottom: 4 }}>¿Qué hace diferente a AulaRed?</div>
         <p className="muted small" style={{ margin: 0 }}>
           Toda la información de tus hijos en un solo lugar, sin depender de grupos de WhatsApp donde los mensajes
           importantes se pierden. Comunicación organizada, con registro y trazabilidad.
