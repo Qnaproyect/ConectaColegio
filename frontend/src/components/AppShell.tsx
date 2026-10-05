@@ -20,11 +20,12 @@ import {
   UserCog,
   ChevronDown,
 } from 'lucide-react'
-import { APP_NAME, SCHOOL_LOGO, SCHOOL_NAME } from '../data/school'
+import { APP_NAME, SCHOOL_NAME } from '../data/school'
 import { useApp } from '../context/AppContext'
 import { useAuth } from '../context/AuthContext'
 import type { Usuario } from '../context/AuthContext'
 import { Toasts } from './Toasts'
+import SchoolLogo from './SchoolLogo'
 import { useState } from 'react'
 
 interface NavItem {
@@ -92,9 +93,7 @@ export default function AppShell() {
       <header className="topbar">
         <div className="container topbar-inner">
           <div className="brand">
-            <span className="brand-logo">
-              <SchoolLogo />
-            </span>
+            <SchoolLogo />
             <span>
               {APP_NAME}
               <span className="brand-sub"> · {SCHOOL_NAME}</span>
@@ -209,19 +208,6 @@ function DireccionSubNav() {
         </div>
       )}
     </>
-  )
-}
-
-function SchoolLogo() {
-  const [fallo, setFallo] = useState(false)
-  if (fallo) return <GraduationCap size={20} />
-  return (
-    <img
-      src={SCHOOL_LOGO}
-      alt={`Logo de ${SCHOOL_NAME}`}
-      className="brand-logo-img"
-      onError={() => setFallo(true)}
-    />
   )
 }
 

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GraduationCap, KeyRound, Loader2, LogIn, ShieldCheck } from 'lucide-react';
-import { APP_NAME, APP_TAGLINE } from '../data/school';
+import { KeyRound, Loader2, LogIn, ShieldCheck } from 'lucide-react';
+import { APP_NAME, APP_TAGLINE, SCHOOL_NAME } from '../data/school';
+import SchoolLogo from '../components/SchoolLogo';
 import { useAuth } from '../context/AuthContext';
 
 const DEMO_CUENTAS = [
@@ -47,11 +48,10 @@ export default function Login() {
     <div className="login-page">
       <div className="login-card">
         <div className="login-logo">
-          <span className="brand-logo" style={{ width: 48, height: 48, borderRadius: 14 }}>
-            <GraduationCap size={26} />
-          </span>
+          <SchoolLogo size={64} radius={18} iconSize={38} />
         </div>
         <h1>{APP_NAME}</h1>
+        <div className="login-school">{SCHOOL_NAME}</div>
         <p className="subtitle">{APP_TAGLINE}</p>
 
         {error && <div className="login-error">{error}</div>}
@@ -103,10 +103,7 @@ export default function Login() {
               disabled={loading}
             >
               <span style={{ fontSize: 18 }}>{c.icon}</span>
-              <span>
-                <strong>{c.label}</strong>
-                <span className="login-demo-sub">{c.email}</span>
-              </span>
+              <strong>{c.label}</strong>
             </button>
           ))}
         </div>
