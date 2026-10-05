@@ -11,10 +11,12 @@ import type {
 } from '../types'
 import { communityStudents } from './community'
 
-export const SCHOOL_NAME = 'Demo'
+export const SCHOOL_NAME = 'Colegio Amapola'
 
 export const APP_NAME = 'AulaRed'
 export const APP_TAGLINE = 'La comunicación escolar, en un solo lugar.'
+
+export const SCHOOL_LOGO = '/logo-amapola.png'
 
 export const REPRESENTANTE: Profile = 'representante'
 export const DOCENTE: Profile = 'docente'

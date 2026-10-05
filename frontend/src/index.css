@@ -113,6 +113,14 @@ h4 {
   display: grid;
   place-items: center;
   flex: none;
+  overflow: hidden;
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .brand-sub {

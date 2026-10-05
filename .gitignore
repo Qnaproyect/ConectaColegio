@@ -27,3 +27,6 @@ yarn-debug.log*
 
 # Binarios descargables del túnel
 cloudflared.exe
+
+# Logo original de alta resolución (solo local; en el repo va la versión optimizada)
+frontend/public/logo-amapola-original.png
